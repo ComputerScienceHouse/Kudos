@@ -15,11 +15,11 @@ The following ROS packages are needed to use kudos\_csh:
 
 These packages can be installed with apt:
 
-- sudo apt-get install ros-<distro>-xv-11-laser-driver
-- sudo apt-get install ros-<distro>-hector-geotiff
-- sudo apt-get install ros-<distro>-hector-mapping
+- sudo apt-get install ros-\<distro\>-xv-11-laser-driver
+- sudo apt-get install ros-\<distro\>-hector-geotiff
+- sudo apt-get install ros-\<distro\>-hector-mapping
 
-Note: replace <distro> with the the appropriate ROS disto.
+Note: replace \<distro\> with the the appropriate ROS disto.
 
 ### Initial Mapping Results
 
