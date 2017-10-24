@@ -3,6 +3,8 @@
 #include "ros.h"
 #include "geometry_msgs/Twist.h"
 
+#define WHEEL_DIST 0.5
+
 ros::NodeHandle nh;
 
 Servo leftMotor;
@@ -11,8 +13,11 @@ Servo rightMotor;
 const int PIN_MOTOR_LEFT = 5;
 const int PIN_MOTOR_RIGHT = 6;
 
-float x_pos = 0;
-float theta = 0;
+double x_pos = 0;
+double theta = 0;
+
+double wheel_goal_left = 0;
+double wheel_goal_right = 0;
 
 void velCallback(const geometry_msgs::Twist& vel);
 
@@ -79,5 +84,13 @@ void arcadeDrive(int16_t y, int16_t x) {
 void velCallback(const geometry_msgs::Twist& vel){
     x_pos = vel.linear.x;
     theta = vel.angular.z;
+    
+    wheel_goal_right = (theta*WHEEL_DIST)/2 + x_pos;
+    wheel_goal_left = (x_pos * 2) - wheel_goal_right;
+    
+    Serial.println("goal_left");
+    Serial.print(wheel_goal_left);
+    Serial.println("goal_right");
+    Serial.print(wheel_goal_right);
 }
 
